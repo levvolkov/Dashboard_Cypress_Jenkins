@@ -1,0 +1,21 @@
+{
+  "name": "dashboard-cypress-jenkins",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "cypress run",
+    "launch:dashboard": "npx cypress open",
+    "launch:jenkins": "java -jar jenkins.war",
+    "test:movie": "cypress run --spec 'cypress/e2e/movie' --record",
+    "test:swagger": "cypress run --spec 'cypress/e2e/swagger' --record",
+    "test:parallel:chrome": "npm run test:movie -- --browser chrome --group Movie & npm run test:swagger -- --browser chrome --group Swagger",
+    "test:parallel:electron": "npm run test:movie -- --browser electron --group Movie & npm run test:swagger -- --browser electron --group Swagger"
+    },
+  "author": "Lev Volkov",
+  "license": "ISC",
+  "devDependencies": {
+    "cypress": "^13.13.1",
+    "npm-run-all": "^4.1.5"
+  }
+}
