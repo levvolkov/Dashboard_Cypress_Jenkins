@@ -7,11 +7,13 @@
     "test": "cypress run",
     "launch:dashboard": "npx cypress open",
     "launch:jenkins": "java -jar jenkins.war",
-    "test:movie": "cypress run --spec 'cypress/e2e/movie' --record",
-    "test:swagger": "cypress run --spec 'cypress/e2e/swagger' --record",
+    "test:movie": "cypress run --spec 'cypress/e2e/movie' --record --key 218d3cca-b1f1-41da-a4cc-99ad1d9c7ee8",
+    "test:swagger": "cypress run --spec 'cypress/e2e/swagger' --record --key 218d3cca-b1f1-41da-a4cc-99ad1d9c7ee8",
     "test:parallel:chrome": "npm run test:movie -- --browser chrome --group Movie & npm run test:swagger -- --browser chrome --group Swagger",
-    "test:parallel:electron": "npm run test:movie -- --browser electron --group Movie & npm run test:swagger -- --browser electron --group Swagger"
-    },
+    "test:parallel:electron": "npm run test:movie -- --browser electron --group Movie & npm run test:swagger -- --browser electron --group Swagger",
+    "test:parallel:firefox": "npm run test:movie -- --browser firefox --group Movie --ci-build-id 7 & npm run test:swagger -- --browser firefox --group Swagger --ci-build-id 7",
+    "test:parallel:streams": "npm run test:movie -- --browser chrome --group Movie --ci-build-id 8 & npm run test:swagger -- --browser firefox --group Swagger --ci-build-id 8"
+  },
   "author": "Lev Volkov",
   "license": "ISC",
   "devDependencies": {
